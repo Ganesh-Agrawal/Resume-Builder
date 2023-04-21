@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function About(props) {
   return (
-    <div className={`container mr-auto p-3 text-${props.mode === 'light' ? 'dark' : 'light'}`} >
+    <div className={`container mr-auto p-3 text-${props.mode === 'light'? 'dark' : 'light'}`} >
      <p>
       Resume builders are platforms that provide pre-designed templates and pre-filled
        content to job applicants to create their resumes quickly. They reduce

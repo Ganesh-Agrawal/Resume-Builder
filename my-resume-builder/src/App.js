@@ -38,7 +38,7 @@ function App() {
             <Route path="login" element={<Login />} />
             <Route path="signup" element={<SignUp />} />
             <Route path="viewresume" element={<ViewResume />} />
-            <Route path="about" element={<About />} />
+            <Route path="about"  mode={mode} element={<About />} />
 
           </Routes>
         </div>
