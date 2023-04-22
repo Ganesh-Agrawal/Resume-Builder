@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 
 export default function Login() {
 
-  const [email, setEmail] = useState();
-  const [pass, setPass] = useState();
+  const [email, setEmail] = useState('');
+  const [pass, setPass] = useState('');
   const [isemailValid, setemailIsValid] = useState(true);
   const [ispassValid, setpassIsValid]= useState(true);
   const validationHandler = (e) => {
@@ -53,12 +53,12 @@ export default function Login() {
           <form onSubmit={validationHandler}>
             <div className="form-group my-2">
               <label htmlFor="email">Email address</label>
-              <input onChange={emailHandler} type="text" className="form-control" id="email" placeholder="Enter email" />
+              <input onChange={emailHandler} type="text" value={email} className="form-control" id="email" placeholder="Enter email" />
               <span>{!isemailValid && <p style={{ color: 'red' }}>Invalid email format</p>}</span>
             </div>
             <div className="form-group my-2">
               <label htmlFor="password">Password</label>
-              <input type="password" onChange={passHandler} className="form-control" id="password" placeholder="Password" />
+              <input type="password" onChange={passHandler} value={pass}className="form-control" id="password" placeholder="Password" />
              <span>{!ispassValid && (<p style={{ color: 'red' }}>
                   Password must be at least 8 characters long and contain at
                   least one lowercase letter, one uppercase letter, and one numeric digit.
