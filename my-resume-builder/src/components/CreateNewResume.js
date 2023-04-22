@@ -1,9 +1,7 @@
 import React,{useState} from 'react'
 
- 
-
-
 export default function CreateNewResume() {
+
   const [formData, setFormData] = useState({
     state: "",
     city: ""
@@ -58,7 +56,6 @@ export default function CreateNewResume() {
                 <option value="">Select  state</option>
                 <option value="raj">Rajasthan</option>
                 <option value="mh">Maharashtra</option>
-                {/* Add more states as needed */}
               </select>
               <select className="form-control" value={formData.city} onChange={handleCityChange}>
                 <option value="">Select  City</option>
@@ -66,17 +63,14 @@ export default function CreateNewResume() {
                   <>
                     <option value="jp">Jaipur</option>
                     <option value="kota">Kota</option>
-                    {/* Add more cities for California */}
                   </>
                 )}
                 {formData.state === "mh" && (
                   <>
                     <option value="bombay">Bombay</option>
                     <option value="pune">Pune</option>
-                    {/* Add more cities for New York */}
                   </>
                 )}
-                {/* Add more cities for other states */}
               </select>
             </div>
             <div className="form-group input-group my-3">
