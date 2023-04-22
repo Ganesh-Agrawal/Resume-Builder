@@ -5,6 +5,8 @@ import SignUp from './components/SignUp';
 import Login from './components/Login';
 import ViewResume from './components/ViewResume';
 import About from './components/About';
+import City from './components/City';
+
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
@@ -39,7 +41,7 @@ function App() {
             <Route path="signup" element={<SignUp />} />
             <Route path="viewresume" element={<ViewResume />} />
             <Route path="about"   element={<About />} />
-
+            <Route path="city"   element={<City />} />
           </Routes>
         </div>
       </Router>
