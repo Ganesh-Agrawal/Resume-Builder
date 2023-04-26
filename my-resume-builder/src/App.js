@@ -9,6 +9,7 @@ import City from './components/City';
 
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import ResumeState from './context/ResumeState';
 
 
 
@@ -29,6 +30,7 @@ function App() {
 
   return (
     <>
+    <ResumeState>
       <Router>
         <div>
           <Navbar mode={mode} toggleMode={toggleMode} />
@@ -45,6 +47,7 @@ function App() {
           </Routes>
         </div>
       </Router>
+      </ResumeState>
     </>
   );
 }
