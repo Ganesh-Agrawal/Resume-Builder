@@ -1,29 +1,58 @@
 import AchievmentsInput from "./AchievmentsInput";
 import SkillInput from "./SkillInput";
+import { Link } from 'react-router-dom'
+import React, { useState } from "react";
 
-export default function Skills() {
+export default function Skills(props) {
+  const [addskill, setaddSkill] = useState([{ skillName: '' }]);
+  const [addAchiv,setAchiv] =useState([{achivName:''}])
+
+  const skillNameHandler = (e, index) => {
+    const { value } = e.target;
+    const updatedaddskill = [...addskill];
+    updatedaddskill[index].skillName = value;
+    setaddSkill(updatedaddskill);
+  };
+  const addAnotherSkill = () => {
+    setaddSkill([...addskill, { achivName: '' }]);
+  };
+
+  const achievmentsNameHandler = (e, index) => {
+    const { value } = e.target;
+    const updatedaddAchiv = [...addskill];
+    updatedaddAchiv[index].achivName = value;
+    setAchiv(updatedaddAchiv);
+  };
+  const addAnotherAchievments = () => {
+    setAchiv([...addAchiv, { achivName: '' }]);
+  };
+
   return (
     <div className="container mt-3 ml-auto card-body my-3 card col-md-6 row justify-content-center">
-        <div className="card-header my-2">Skills and Achievments</div>
-        <div>
-          <form>
-           
-
-
-           
-            <SkillInput/>
-            <div className=" my-2">
-              <button type="submit" id="addskill" className="mx-4 btn btn-light">Add Skills</button>
-            </div>
-            <AchievmentsInput/>
-            <div className=" my-2">
-              <button type="submit" id="addachievment" className="mx-4 btn btn-light">Add Achievment</button>
-            </div>
-            <div className=" my-2">
-              <button type="submit" id="nextTowork" className="mx-2 btn btn-primary">Save and Next</button>
-            </div>
+      <div className="card-header my-2">Skills and Achievments</div>
+      <div>
+        {addskill.map((addskills, index) => (
+          <form key={index}>
+            <SkillInput hf={`skillName${index}`} skillNameHandler={(e) => skillNameHandler(e, index)} value={addskills.skillName} />
           </form>
-        </div>
+        ))}
+          <div className=" my-2">
+            <button onClick={addAnotherSkill} type="submit" id="addskill" className="mx-4 btn btn-light">Add Skills</button>
+          </div>
+          {addAchiv.map((addAchivs, index) => (
+          <form key={index}>
+            <AchievmentsInput  hf={`achivName${index}`} 
+              achievmentsNameHandler={(e) => achievmentsNameHandler(e, index)} value={addAchivs.achivName}  />
+          </form>
+        ))}
+            
+          <div className=" my-2">
+            <button type="submit"  onClick={addAnotherAchievments} id="addachievment" className="mx-4 btn btn-light">Add Achievment</button>
+          </div>
+          <div className=" my-2">
+            <Link to="/workexperience" type="submit" id="nextTowork" className="mx-2 btn btn-primary">Save and Next</Link>
+          </div>
       </div>
+    </div>
   )
 }

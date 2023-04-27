@@ -1,10 +1,11 @@
-import React from 'react'
+import React ,{useState} from 'react'
 
-export default function SkillInput() {
-  return (
+export default function SkillInput(props) {
+    return (
     <div className="form-group input-group my-3">
-    <label className="input-group-text" htmlFor="skills">Skills</label>
-    <input type="text" className="form-control" id="skills" placeholder="Enter Your Skill" />
+    <label className="input-group-text" htmlFor={props.hf}>Skills</label>
+    <input  onChange ={props.skillNameHandler}  value={props.value}
+     type="text" className="form-control" id={props.hf} placeholder="Enter Your Skill" />
   </div>
   )
 }

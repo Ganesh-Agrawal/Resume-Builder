@@ -1,4 +1,5 @@
 import React , { useState }from 'react'
+import { Link } from 'react-router-dom'
 
 export default function PersonalDetail() {
 
@@ -84,7 +85,7 @@ export default function PersonalDetail() {
           </div>
         </div>
         <div className=" my-2">
-          <button type="submit" id="nextToeducation" className="btn btn-primary">Save and Next</button>
+          <Link to="/education" type="submit" id="nextToeducation" className="btn btn-primary">Save and Next</Link>
         </div>
       </form>
     </div>
