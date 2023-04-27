@@ -19,8 +19,14 @@ export default function Education() {
   };
 
 
-  const addAnotherEducation = () => {
+  const addEducationHandler = () => {
     setaddEducation([...addEducation, { instituteName: '', university: '' }]);
+  };
+
+  const RemoveEducationHandler = (index) => {
+    const values = [...addEducation];
+    values.splice(index, 1);
+    setaddEducation(values);
   };
 
   return (
@@ -51,9 +57,13 @@ export default function Education() {
         </div>
         </form>
          ))}
+         <div className=" my-4 mx-2">
+         <button onClick={addEducationHandler} type="submit" id="addeducation" className="mx-2 btn btn-info">Add Education</button>
+         <button onClick={RemoveEducationHandler} type="submit" id="removeeducation" className="mx-2 btn btn-info">Remove Education</button>
+        </div>
         <div className=" my-2 mx-2">
-          <button onClick={addAnotherEducation} type="submit" id="addeducation" className="mx-2 btn btn-info">Add Education</button>
-          <Link to="/skills" type="submit" id="nextToskill" className="mx-2 btn btn-primary">Save and Next</Link>
+          <Link to="/createnewresume" type="submit" id="prevTocreatenewresume" className="mx-4 btn btn-primary">Previous</Link>
+          <Link to="/skills" type="submit" id="nextToskill" className="mx-4 btn btn-primary">Save and Next</Link>
         </div>
       
     </div>
