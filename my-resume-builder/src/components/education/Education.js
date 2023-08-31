@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import {Link} from 'react-router-dom'
 
 export default function Education() {
-  const [addEducation, setaddEducation] = useState([{ instituteName: '', university: '' }]);
+  const [addEducation, setaddEducation] = useState([{ instituteName: '', university: '', degree:'' }]);
 
   const instituteNameHandler = (e, index) => {
     const { value } = e.target;
@@ -17,10 +17,15 @@ export default function Education() {
     updatedaddEducation[index].university = value;
     setaddEducation(updatedaddEducation);
   };
-
+  const degreeHandler = (e, index) => {
+    const { value } = e.target;
+    const updatedaddEducation = [...addEducation];
+    updatedaddEducation[index].degree = value;
+    setaddEducation(updatedaddEducation);
+  };
 
   const addEducationHandler = () => {
-    setaddEducation([...addEducation, { instituteName: '', university: '' }]);
+    setaddEducation([...addEducation, { instituteName: '', university: '', degree:'' }]);
   };
 
   const RemoveEducationHandler = (index) => {
@@ -28,6 +33,7 @@ export default function Education() {
     values.splice(index, 1);
     setaddEducation(values);
   };
+  
 
   return (
     <div className="container mt-3 ml-auto card-body my-3 card col-md-6 row justify-content-center">
@@ -48,8 +54,10 @@ export default function Education() {
                   id={`university${index}`} placeholder="Enter University Name" />
         </div>
         <div className="form-group input-group my-3">
-          <label className="input-group-text" htmlFor="degree">Degree </label>
-          <input type="text" className="form-control" id="degree" placeholder="Enter Your Degree" />
+          <label className="input-group-text" htmlFor={`degree${index}`}>Degree </label>
+          <input type="text" className="form-control"  onChange={(e) => degreeHandler(e, index)}
+                  value={addEdu.degree}
+          id={`degree${index}`} placeholder="Enter Your Degree" />
         </div>
         <div className="form-group input-group my-3">
           <label className="input-group-text" htmlFor="endyear">End Year</label>
@@ -58,8 +66,10 @@ export default function Education() {
         </form>
          ))}
          <div className=" my-4 mx-2">
-         <button onClick={addEducationHandler} type="submit" id="addeducation" className="mx-2 btn btn-info">Add Education</button>
-         <button onClick={RemoveEducationHandler} type="submit" id="removeeducation" className="mx-2 btn btn-info">Remove Education</button>
+         <button onClick={addEducationHandler} type="submit" id="addeducation" className="mx-2 btn btn-info">
+          Add Education</button>
+         <button onClick={RemoveEducationHandler} type="submit" id="removeeducation" className="mx-2 btn btn-info">
+          Remove Education</button>
         </div>
         <div className=" my-2 mx-2">
           <Link to="/createnewresume" type="submit" id="prevTocreatenewresume" className="mx-4 btn btn-primary">Previous</Link>

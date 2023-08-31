@@ -19,7 +19,7 @@ export default function Skills(props) {
 
   const achievmentsNameHandler = (e, index) => {
     const { value } = e.target;
-    const updatedaddAchiv = [...addskill];
+    const updatedaddAchiv = [...addAchiv];
     updatedaddAchiv[index].achivName = value;
     setAchiv(updatedaddAchiv);
   };

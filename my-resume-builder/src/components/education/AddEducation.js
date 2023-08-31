@@ -10,6 +10,7 @@ export default function AddEducation() {
     setaddEducation(updatedaddEducation);
   };
 
+
   const universityHandler = (e, index) => {
     const { value } = e.target;
     const updatedaddEducation = [...addEducation];
@@ -38,9 +39,10 @@ export default function AddEducation() {
               <div className="form-group my-2">
                 <label htmlFor={`university${index}`}>university</label>
                 <input onChange={(e) => universityHandler(e, index)}
-                  value={addEdu.university} type="password"
+                  value={addEdu.university} type="text"
                   className="form-control" id={`university${index}`} placeholder="university" />
               </div>
+              
             </form>
           ))}
         </div>

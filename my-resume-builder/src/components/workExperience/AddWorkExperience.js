@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 
 export default function AddWorkExperience() {
-  const [addWorkExp, setaddWorkExp] = useState([{ compName: '' }]);
+  const [addWorkExp, setaddWorkExp] = useState([{ compName: '' , designation:'' }]);
 
   const companyNameHandler = (e, index) => {
     const { value } = e.target;
@@ -9,23 +9,39 @@ export default function AddWorkExperience() {
     updatedaddWorkExp[index].compName = value;
     setaddWorkExp(updatedaddWorkExp);
   };
+  const designationHandler = (e, index) => {
+    const { value } = e.target;
+    const updatedaddWorkExp = [...addWorkExp];
+    updatedaddWorkExp[index].designation = value;
+    setaddWorkExp(updatedaddWorkExp);
+  };
   
   const addAnotherWork = () => {
-    setaddWorkExp([...addWorkExp, { compName: '' }]);
+    setaddWorkExp([...addWorkExp, { compName: '', designation:''  }]);
   };
+
+  const RemoveExpHandler = (index) => {
+    const values = [...addWorkExp];
+    values.splice(index, 1);
+    setaddWorkExp(values);
+  };
+ 
 
   return (
     <>
      {addWorkExp.map((addExp, index) => (
             <form key={index}>
       <div className="form-group input-group my-3">
-        <label className="input-group-text" htmlFor="compName">Company Name</label>
+        <label className="input-group-text" htmlFor={`compName${index}`}>Company Name</label>
         <input type="text" className="form-control" onChange={(e) => companyNameHandler(e, index)}
-          value={addExp.compName} id={`compName${index}`} placeholder="Enter Company Name" />
+                  value={addExp.compName}
+          id={`compName${index}`} placeholder="Enter Company Name" />
       </div>
       <div className="form-group input-group my-3">
-        <label className="input-group-text" htmlFor="designation">Designation</label>
-        <input type="text" className="form-control" id="designation" placeholder="Enter your Designation" />
+        <label className="input-group-text" htmlFor={`designation${index}`}>Designation</label>
+        <input type="text" className="form-control"  onChange={(e) => designationHandler(e, index)}
+                  value={addExp.designation}
+          id={`designation${index}`}  placeholder="Enter your Designation" />
       </div>
       <div className="form-group input-group my-3">
         <label className="input-group-text" htmlFor="startyear">Start Year</label>
